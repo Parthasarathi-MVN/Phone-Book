@@ -1,0 +1,34 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Parthasarathi",
+      "email": "Partha@mail.com",
+      "mobile": "1111111111"
+    },
+    {
+      "id": 2,
+      "name": "Tarak",
+      "email": "Tarak@mail.com",
+      "mobile": "2222222222"
+    },
+    {
+      "id": 3,
+      "name": "Mahesh",
+      "email": "Mahesh@mail.com",
+      "mobile": "3333333333"
+    },
+    {
+      "id": 4,
+      "name": "Arjun",
+      "email": "Arjun@mail.com",
+      "mobile": "4444444444"
+    },
+    {
+      "name": "Chaitanya",
+      "email": "chay@mail.com",
+      "mobile": 5555555555,
+      "id": 5
+    }
+  ]
+}

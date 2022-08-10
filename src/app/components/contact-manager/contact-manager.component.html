@@ -1,0 +1,133 @@
+<div class="container mt-3 text-center">
+  <div><h2>LTI Contacts</h2></div>
+
+  <a routerLink="/contacts/add" class="btn btn-sm btn-outline-dark"
+    ><h4>Add a contact <i class="fa fa-plus-circle"></i></h4
+  ></a>
+
+  <h5 class="mt-3">
+    This is a Contact Application which can be used to Create, View, Edit and
+    Delete Contacts.
+  </h5>
+  <p>
+    <b>Tip:</b> You can Sort the contacts on Name, Email and Mobile by clicking
+    on the respective cloumn headings (you can see arrows as well.)
+  </p>
+</div>
+
+<form>
+  <div class="container text-center">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search for your contact by Name, Email or Mobile"
+      name="search"
+      [(ngModel)]="searchText"
+    />
+  </div>
+</form>
+
+<!-- loading spinner -->
+
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+
+<!-- Cards  -->
+<div class="container">
+  <table class="table table-success table-striped mt-3">
+    <thead>
+      <tr>
+        <th (click)="sort('id')">Name <i class="fa fa-sort"></i></th>
+        <th (click)="sort('id')">Email <i class="fa fa-sort"></i></th>
+        <th (click)="sort('id')">Mobile <i class="fa fa-sort"></i></th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="!loading && contacts.length > 0">
+      <tr
+        *ngFor="
+          let contact of contacts | filter: searchText | orderBy: key:reverse
+        "
+      >
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.email }}</td>
+        <td>{{ contact.mobile }}</td>
+        <td>
+          <a
+            routerLink="/contacts/view/{{ contact.id }}"
+            class="mt-1 btn btn-outline-dark"
+          >
+            <i class="fa fa-eye"></i>
+          </a>
+        </td>
+        <td>
+          <a
+            routerLink="/contacts/edit/{{ contact.id }}"
+            class="mt-1 btn btn-outline-primary"
+          >
+            <i class="fa fa-pen"></i>
+          </a>
+        </td>
+        <td>
+          <button
+            class="mt-1 btn btn-danger"
+            (click)="deleteContact(contact.id)"
+          >
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 
+
+<div class="container mt-5" *ngIf="!loading && contacts.length > 0">
+  <div class="row">
+    <div class="col-md-6" *ngFor="let contact of contacts | filter: searchText">
+      <div class="card list-group-item list-group-item-info my-2">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-7">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  Name: <span class="fw-bold">{{ contact.name }}</span>
+                </li>
+                <li class="list-group-item">
+                  Mobile: <span class="fw-bold">{{ contact.mobile }}</span>
+                </li>
+                <li class="list-group-item">
+                  Email: <span class="fw-bold">{{ contact.email }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-1">
+              <a
+                routerLink="/contacts/view/{{ contact.id }}"
+                class="mt-1 btn btn-dark"
+              >
+                <i class="fa fa-eye"></i>
+              </a>
+              <a
+                routerLink="/contacts/edit/{{ contact.id }}"
+                class="mt-1 btn btn-dark"
+              >
+                <i class="fa fa-pen"></i>
+              </a>
+              <button
+                class="mt-1 btn btn-danger"
+                (click)="deleteContact(contact.id)"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

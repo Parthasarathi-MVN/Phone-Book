@@ -1,0 +1,56 @@
+<div class="container text-center mt-5">
+  <h2>Edit Contact</h2>
+  <p>You are Updating the selected Contact</p>
+</div>
+
+<!--Edit form -->
+
+<div class="container text-center">
+  <form (submit)="submitUpdate()">
+    <div class="mb-2">
+      <input
+        style="width: 500px; display: inline-block"
+        required="true"
+        [(ngModel)]="contact.name"
+        [value]="contact.name"
+        name="name"
+        [(ngModel)]="contact.name"
+        name="name"
+        type="text"
+        class="form-control"
+        placeholder="Name"
+      />
+    </div>
+    <div class="mb-2">
+      <input
+        required="true"
+        [(ngModel)]="contact.email"
+        [value]="contact.email"
+        name="email"
+        style="width: 500px; display: inline-block"
+        required="true"
+        [(ngModel)]="contact.email"
+        name="email"
+        type="email"
+        class="form-control"
+        placeholder="Email"
+      />
+    </div>
+    <div class="mb-2">
+      <input
+        style="width: 500px; display: inline-block"
+        required="true"
+        [(ngModel)]="contact.mobile"
+        name="mobile"
+        type="number"
+        class="form-control"
+        placeholder="Mobile"
+      />
+    </div>
+
+    <div class="mb-2">
+      <input type="submit" class="btn btn-dark" value="Update" />
+      <a routerLink="/" class="btn btn-dark ms-3">Cancel</a>
+    </div>
+  </form>
+</div>

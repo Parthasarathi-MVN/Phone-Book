@@ -1,0 +1,84 @@
+<div class="container text-center mt-5">
+  <h2>Add a Contact</h2>
+  <p>
+    Enter the details of your contact and click on <b>Create</b> to add the
+    contact
+  </p>
+</div>
+
+<!-- loading spinner -->
+
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+
+<!-- form -->
+
+<div class="container text-center">
+  <form (submit)="createContact()">
+    <div class="mb-2">
+      <input
+        style="width: 500px; display: inline-block"
+        required="true"
+        [(ngModel)]="contact.name"
+        name="name"
+        type="text"
+        class="form-control"
+        placeholder="Name"
+        id="name"
+        ngModel
+        #name="ngModel"
+      />
+      <div *ngIf="name.touched">
+        <div *ngIf="name.errors?.['required']">UserName is required</div>
+      </div>
+    </div>
+    <div class="mb-2">
+      <input
+        style="width: 500px; display: inline-block"
+        required="true"
+        [(ngModel)]="contact.email"
+        name="email"
+        type="email"
+        class="form-control"
+        placeholder="Email"
+        id="email"
+        ngModel
+        #email="ngModel"
+      />
+      <div *ngIf="email.touched">
+        <div *ngIf="email.errors?.['required']">Email is required</div>
+      </div>
+    </div>
+    <div class="mb-2">
+      <input
+        style="width: 500px; display: inline-block"
+        required="true"
+        [(ngModel)]="contact.mobile"
+        name="mobile"
+        type="number"
+        class="form-control"
+        placeholder="Mobile"
+        ngModel
+        #mobile="ngModel"
+        pattern="^[0-9]{10}$"
+        minlength="10"
+        maxlength="10"
+      />
+      <div *ngIf="mobile.touched">
+        <div *ngIf="mobile.errors?.['required']">Phone Number is required</div>
+        <div *ngIf="mobile.errors?.['minlength']?.['maxlength']">
+          Phone Number should be of 10 length
+        </div>
+        <!-- <div *ngIf="mobile.errors?.['pattern']">
+          Phone Number should only numbers
+        </div> -->
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <input type="submit" class="btn btn-dark" value="Create" />
+      <a routerLink="/" class="btn btn-dark ms-3">Cancel</a>
+    </div>
+  </form>
+</div>
